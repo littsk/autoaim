@@ -9,8 +9,10 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(auto_aim_interface REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
+find_package(image_transport REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -27,7 +29,7 @@ else()
   message(FATAL_ERROR "Unsupport host system architecture: ${CMAKE_HOST_SYSTEM_PROCESSOR}!")
 endif()
 
-ament_target_dependencies(camera_catch_node rclcpp sensor_msgs)
+ament_target_dependencies(camera_catch_node rclcpp sensor_msgs image_transport auto_aim_interface)
 
 target_link_libraries(camera_catch_node libMVSDK.so ${OpenCV_LIBS})
 
